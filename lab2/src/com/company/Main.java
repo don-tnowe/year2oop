@@ -8,8 +8,7 @@ public class Main
     {
         Cart cart = new Cart(15);
         System.out.println("Добро Пожаловать!");
-        while (true)
-        {
+        while (true) {
             String name; // ввод наименования
             Scanner scanStr = new Scanner(System.in);
             System.out.println("Введите название товара (пустая строка = ''Готово''): ");
@@ -19,8 +18,7 @@ public class Main
 
             float price; // ввод стоимости
             System.out.println("\tВведите стоимость товара: ");
-            while (true)
-            {
+            while (true) {
                 Scanner scanFloat = new Scanner(System.in);
                 try {
                     price = scanFloat.nextFloat();

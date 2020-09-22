@@ -11,12 +11,10 @@ public class Item {
         else
             price = 0;
     }
-    public void raisePricePercent(float percent)
-    {
+    public void raisePricePercent(float percent) {
         price *= 1.0 + percent * 0.01;
     }
-    public void lowerPricePercent(float percent)
-    {
+    public void lowerPricePercent(float percent) {
         if (percent < 100)
             price *= 1.0 - percent * 0.01;
         else
