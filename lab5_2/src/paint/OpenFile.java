@@ -78,7 +78,18 @@ public class OpenFile extends JFrame {
 	                        	}
 	                        	GUI.paint.add(r);
 	                        	GUI.frame.repaint();
-	                        }else if(a[0].equals("MyLine")){
+	                        }else if(a[0].equals("MyDiamond")){
+								MyDiamond r = new MyDiamond();
+								r.makeObject(Integer.parseInt(a[1]), Integer.parseInt(a[2]), Integer.parseInt(a[3]), Integer.parseInt(a[4]));
+								r.setLineColor(new Color(Integer.parseInt(a[5]), Integer.parseInt(a[6]), Integer.parseInt(a[7])));
+								if(a[8].equals("null")){
+									r.setColor(null);
+								}else{
+									r.setColor(new Color(Integer.parseInt(a[8]), Integer.parseInt(a[9]), Integer.parseInt(a[10])));
+								}
+								GUI.paint.add(r);
+								GUI.frame.repaint();
+							}else if(a[0].equals("MyLine")){
 	                        	Point startPoint = new Point(Integer.parseInt(a[1]), Integer.parseInt(a[2]));
 	                        	Point endPoint = new Point(Integer.parseInt(a[3]), Integer.parseInt(a[4]));
 	                        	MyLine r = new MyLine(startPoint, endPoint);

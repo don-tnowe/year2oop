@@ -58,6 +58,11 @@ public class Paint_App extends JComponent {
 	        		obj.makeObject(startDrag, p);
 	    			GUI.paint.add(obj);
 	        	}
+				else if(GUI.selectShap == "Diamond"){
+					MyDiamond obj = new MyDiamond();
+					obj.makeObject(startDrag, p);
+					GUI.paint.add(obj);
+				}
 	        	else if(GUI.selectShap == "Oval"){
 	        		MyOval obj = new MyOval();
 	        		obj.makeObject(startDrag, p);
@@ -161,19 +166,23 @@ public class Paint_App extends JComponent {
 				obj.makeObject(startDrag, endDrag);
 				obj.draw(g2);
 			}
+			else if(GUI.selectShap == "Diamond"){
+				MyDiamond obj = new MyDiamond();
+				obj.makeObject(startDrag, endDrag);
+				obj.draw(g2);
+			}
 			else if(GUI.selectShap == "move"){
         			if(ptemp instanceof MyRectangle){
         				MyRectangle r = (MyRectangle)ptemp;
         				if(r.contains(startDrag)){
         					if(r.getColor()==null){
         						g2.getGraphicAdapter().setColor(r.getLineColor());
-        						g2.getGraphicAdapter().drawRect(r.getRect().x + endDrag.x - startDrag.x, r.getRect().y + endDrag.y - startDrag.y, r.getRect().width, r.getRect().height);
-        					}else {
+							}else {
         						g2.getGraphicAdapter().setColor(r.getColor());
         						g2.getGraphicAdapter().fillRect(r.getRect().x + endDrag.x - startDrag.x, r.getRect().y + endDrag.y - startDrag.y, r.getRect().width, r.getRect().height);
-        						g2.getGraphicAdapter().drawRect(r.getRect().x + endDrag.x - startDrag.x, r.getRect().y + endDrag.y - startDrag.y, r.getRect().width, r.getRect().height);
 							}
-        				}
+							g2.getGraphicAdapter().drawRect(r.getRect().x + endDrag.x - startDrag.x, r.getRect().y + endDrag.y - startDrag.y, r.getRect().width, r.getRect().height);
+						}
         			}else if (ptemp instanceof MyOval) {
         				MyOval oval = (MyOval)ptemp;
         				if(oval.contains(startDrag)){
@@ -186,19 +195,31 @@ public class Paint_App extends JComponent {
         					}
         				}
 					}else if (ptemp instanceof MyTriangle) {
-        				MyTriangle tr = (MyTriangle)ptemp;
-        				if(tr.contains(startDrag)){
-        					int[]x = {tr.getTriangle().xpoints[0] + endDrag.x - startDrag.x,tr.getTriangle().xpoints[1] + endDrag.x - startDrag.x, tr.getTriangle().xpoints[2] + endDrag.x - startDrag.x};
-        					int[]y = {tr.getTriangle().ypoints[0] + endDrag.y - startDrag.y,tr.getTriangle().ypoints[1] + endDrag.y - startDrag.y, tr.getTriangle().ypoints[2] + endDrag.y - startDrag.y};
-        					if(tr.getColor()==null){
-        						g2.getGraphicAdapter().setColor(tr.getLineColor());
-        						g2.getGraphicAdapter().drawPolygon(x,y,3);
-        					}else{
-        						g2.getGraphicAdapter().setColor(tr.getColor());
-        						g2.getGraphicAdapter().fillPolygon(x,y,3);
-        						g2.getGraphicAdapter().drawPolygon(x,y,3);
-        					}
-        				}
+						MyTriangle tr = (MyTriangle) ptemp;
+						if (tr.contains(startDrag)) {
+							int[] x = {tr.getTriangle().xpoints[0] + endDrag.x - startDrag.x, tr.getTriangle().xpoints[1] + endDrag.x - startDrag.x, tr.getTriangle().xpoints[2] + endDrag.x - startDrag.x};
+							int[] y = {tr.getTriangle().ypoints[0] + endDrag.y - startDrag.y, tr.getTriangle().ypoints[1] + endDrag.y - startDrag.y, tr.getTriangle().ypoints[2] + endDrag.y - startDrag.y};
+							if (tr.getColor() == null) {
+								g2.getGraphicAdapter().setColor(tr.getLineColor());
+							} else {
+								g2.getGraphicAdapter().setColor(tr.getColor());
+								g2.getGraphicAdapter().fillPolygon(x, y, 3);
+							}
+							g2.getGraphicAdapter().drawPolygon(x, y, 3);
+						}
+					}else if (ptemp instanceof MyDiamond) {
+						MyDiamond tr = (MyDiamond) ptemp;
+						if (tr.contains(startDrag)) {
+							int[] x = {tr.getDiamond().xpoints[0] + endDrag.x - startDrag.x, tr.getDiamond().xpoints[1] + endDrag.x - startDrag.x, tr.getDiamond().xpoints[2] + endDrag.x - startDrag.x, tr.getDiamond().xpoints[3] + endDrag.x - startDrag.x};
+							int[] y = {tr.getDiamond().ypoints[0] + endDrag.y - startDrag.y, tr.getDiamond().ypoints[1] + endDrag.y - startDrag.y, tr.getDiamond().ypoints[2] + endDrag.y - startDrag.y, tr.getDiamond().ypoints[3] + endDrag.y - startDrag.y};
+							if (tr.getColor() == null) {
+								g2.getGraphicAdapter().setColor(tr.getLineColor());
+							} else {
+								g2.getGraphicAdapter().setColor(tr.getColor());
+								g2.getGraphicAdapter().fillPolygon(x, y, 4);
+							}
+							g2.getGraphicAdapter().drawPolygon(x, y, 4);
+						}
 					}else if (ptemp instanceof MyLine) {
         				MyLine tr = (MyLine)ptemp;
         				if(tr.contains(startDrag)){

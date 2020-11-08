@@ -1,21 +1,37 @@
 package com.company;
+import java.util.Scanner;
 
 public class Main {
-    /*
-    Необходимо реализовать приложение, работающее с шарами.
-    Первый вспомогательный класс - точка - определяется
-    параметрами x, y, z - координатами точки в трёхмерном
-    пространстве. Второй вспомогательный класс - шар - определяется
-    параметрами p и R - точкой центра и радиусом.
-    Помимо этого, у отрезка должен быть метод inside, который
-    в качестве аргумента принимает точку. Он должен возвращать
-    true, если точка находится внутри шара. Основной класс должен запросить
-    у пользователя координаты центра шара и его радиус,
-    после чего создать объект шара. После этого он должен
-    запросить у пользователя координаты точки и вывести ответ -
-    находится ли точка внутри шара.
-    * */
     public static void main(String[] args) {
-	// write your code here
+	    Scanner input = new Scanner(System.in);
+	    System.out.println("Введите параметры шара!");
+
+	    System.out.println("x: ");
+        float orb_x = input.nextFloat();
+        System.out.println("y: ");
+        float orb_y = input.nextFloat();
+        System.out.println("z: ");
+        float orb_z = input.nextFloat();
+        System.out.println("Радиус: ");
+        float orb_rad = input.nextFloat();
+
+        SpatialOrb orb = new SpatialOrb(orb_x, orb_y, orb_z,orb_rad);
+
+        System.out.println("Какую точку проверить?");
+
+        while (true) {
+            System.out.println("x: ");
+            float point_x = input.nextFloat();
+            System.out.println("y: ");
+            float point_y = input.nextFloat();
+            System.out.println("z: ");
+            float point_z = input.nextFloat();
+
+            SpatialPoint point = new SpatialPoint(point_x, point_y, point_z);
+            if (orb.contains(point))
+                System.out.println("Да, точка внутри шара.");
+            else
+                System.out.println("Точка не находится внутри шара.");
+        }
     }
 }

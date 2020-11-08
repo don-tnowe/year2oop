@@ -5,8 +5,7 @@ import java.awt.Graphics2D;
 
 abstract class GraphicAdapter{
 	public Graphics2D GraphicAdapter;
-	public GraphicAdapter(){
-	}
+	public GraphicAdapter() { }
 	public GraphicAdapter(Graphics g){
 		this.GraphicAdapter = (Graphics2D) g;
 	}

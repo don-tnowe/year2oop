@@ -28,14 +28,14 @@ public class Main
                 }
             }
 
-            cart.add_item(new Item(name, price));
+            cart.addItem(new Item(name, price));
         }
-        System.out.println("Стоимость корзины: " + cart.get_total_price());
+        System.out.println("Стоимость корзины: " + cart.getTotalPrice());
         System.out.println("\tЦены подняты на 15%!");
         cart.raisePricePercent(15);
-        System.out.println("Стоимость корзины: " + cart.get_total_price());
+        System.out.println("Стоимость корзины: " + cart.getTotalPrice());
         System.out.println("\tЦены подняты ещё на 30%!");
         cart.raisePricePercent(30);
-        System.out.println("Стоимость корзины: " + cart.get_total_price());
+        System.out.println("Стоимость корзины: " + cart.getTotalPrice());
     }
 }

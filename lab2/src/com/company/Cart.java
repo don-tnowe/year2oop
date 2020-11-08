@@ -6,7 +6,7 @@ public class Cart {
     public Cart(int capacity) {
         items = new Item[capacity];
     }
-    public boolean add_item(Item item) {
+    public boolean addItem(Item item) {
         if (itemCount < items.length) {
             items[itemCount++] = item;
             return true;
@@ -16,7 +16,7 @@ public class Cart {
             return false;
         }
     }
-    public boolean del_last_item() {
+    public boolean delLastItem() {
         if (itemCount > 0) {
             items[--itemCount] = null;
             return true;
@@ -26,7 +26,7 @@ public class Cart {
             return false;
         }
     }
-    public boolean del_first_item() {
+    public boolean delFirstItem() {
         if (itemCount > 0) {
             for (int i = 0; i < itemCount; ++i) {
                 if (i != itemCount)
@@ -40,7 +40,7 @@ public class Cart {
         System.out.print("Ошибка: корзина пуста!");
         return false;
     }
-    public float get_total_price() {
+    public float getTotalPrice() {
         float returnValue = 0;
         for (int i = 0; i < itemCount; ++i) {
             returnValue += items[i].price;

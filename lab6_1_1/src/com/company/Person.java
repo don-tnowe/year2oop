@@ -1,9 +1,8 @@
 package com.company;
 
-public class Person{
+public class Person implements IPerson{
     public String firstname;
     public String lastname;
-    public int age;
 
     public Person (String firstname, String lastname, int age) {
         this.firstname = firstname;

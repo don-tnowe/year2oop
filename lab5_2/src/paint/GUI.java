@@ -26,7 +26,7 @@ public class GUI extends JFrame {
 	public static ArrayList<Paint> paint = new ArrayList<Paint>();
 	private JPanel contentPane;
 	public static GUI frame;  
-	
+
 	public static void main(String[] args) 
     {
     	try{
@@ -209,7 +209,18 @@ public class GUI extends JFrame {
 			}
 		});
 		panel.add(btnTri);
-		
+
+		/*
+		 * Button selected draw Diamond
+		 */
+		JButton btnDiam = new JButton("Diamond");
+		btnDiam.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				selectShap = "Diamond";
+			}
+		});
+		panel.add(btnDiam);
+
 		/*
 		 * Button selected draw Circle
 		 */
@@ -235,7 +246,7 @@ public class GUI extends JFrame {
 		/*
 		 * Button choose color
 		 */
-		JButton btnChooseColor = new JButton("Chose Color");
+		JButton btnChooseColor = new JButton("Choose Color");
 		btnChooseColor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				//selectShap = "ChooseColor";
@@ -265,7 +276,19 @@ public class GUI extends JFrame {
 			}
 		});
 		panel.add(btnDelete);
-		
+
+		/*
+		 * Button for clearing the canvas
+		 */
+		JButton btnClear = new JButton("Clear");
+		btnClear.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				paint.clear();
+				contentPane.repaint();
+			}
+		});
+		panel.add(btnClear);
+
 		/*
 		 * Create Panel Color to select color
 		 */
